@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080a12">
+<title>永世爱恋 · 格芮芙</title>
+<link rel="icon" href="assets/char/avatar.png">
+<link rel="stylesheet" href="css/style.css?v=13">
+</head>
+<body data-skin="vow">
+
+<div class="scene" id="scene"></div>
+<div class="scene-veil"></div>
+<div class="grain"></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="frenzy-flash" id="frenzyFlash" aria-hidden="true"></div>
+
+<main class="app">
+
+  <section class="stage">
+    <div class="actor-wrap" id="actorWrap" aria-hidden="true">
+      <span class="actor-halo"></span>
+      <img class="actor" id="actor" src="assets/char/idle.png" alt="格芮芙" title="碰碰她">
+    </div>
+
+    <header class="brand">
+      <span class="brand-mark">✦</span>
+      <div class="brand-text">
+        <h1>永世爱恋</h1>
+        <p>格芮芙 · MBCC-S-214</p>
+      </div>
+    </header>
+
+    <div class="stage-mid">
+      <p class="idle-line" id="idleLine"></p>
+      <p class="idle-sub" id="idleSub"></p>
+    </div>
+
+    <div class="stage-bottom">
+      <div class="plate">
+        <span class="seal" aria-hidden="true"></span>
+        <div class="plate-text">
+          <div class="name">格芮芙</div>
+          <div class="tag">鬼新娘 · 奇诡话剧</div>
+        </div>
+        <div class="status" id="statusPill"><i></i><span>她在这里</span></div>
+      </div>
+
+      <nav class="skins" id="skins" aria-label="换装"></nav>
+
+    </div>
+  </section>
+
+  <section class="chat">
+    <header class="chat-top">
+      <div class="face-chip" id="faceChip"><img id="faceImg" src="assets/faces/original.jpg" alt="格芮芙"></div>
+      <div class="chat-title">
+        <strong>奇诡话剧 · 第 壹 幕</strong>
+        <span id="moodText">她正看着你</span>
+      </div>
+      <button class="icon-btn" id="llmBtn" type="button" title="对话模型">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7"/></svg>
+      </button>
+    </header>
+
+    <div class="meta">
+      <span class="meta-label">亲密度</span>
+      <div class="meta-bar"><i id="affBar"></i></div>
+      <span class="meta-num" id="affNum">30</span>
+      <span class="meta-sep"></span>
+      <span id="visitNum">第 1 次见面</span>
+      <span class="meta-sep"></span>
+      <span id="remindNum">0 个约定</span>
+    </div>
+
+    <div class="log" id="log" aria-live="polite"></div>
+
+    <div class="chips" id="chips">
+      <button type="button">今天过得怎么样</button>
+      <button type="button">给我讲讲婚礼</button>
+      <button type="button">弹一段给我听</button>
+    </div>
+
+    <div class="typing" id="typing" hidden><span></span><span></span><span></span></div>
+
+    <div class="rituals" id="rituals">
+      <button type="button" data-act="touch"><b>触碰</b><i>她会脸红</i></button>
+      <button type="button" data-act="companion"><b>陪伴</b><i>计时陪着</i></button>
+      <button type="button" data-act="organ"><b>管风琴</b><i>弹一小段</i></button>
+      <button type="button" data-act="invite"><b>邀约</b><i>火漆与字条</i></button>
+      <button type="button" data-act="remind"><b>提醒</b><i>她会准时</i></button>
+      <button type="button" data-act="study"><b>学习</b><i>每小时一次</i></button>
+    </div>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <button class="mic" id="micBtn" type="button" title="按住说话" aria-label="语音输入">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
+        <span class="pulse"></span>
+      </button>
+      <input id="input" type="text" placeholder="对她说点什么……" maxlength="200">
+      <button class="send" type="submit">寄出</button>
+    </form>
+
+    <p class="hint" id="hint">语音交给浏览器转写，可能经过浏览器厂商的服务器。介意就打字。</p>
+  </section>
+</main>
+
+
+<section class="focus" id="focus" data-scene="vow" hidden>
+  <button class="focus-close" id="focusClose" type="button" aria-label="退出陪伴">×</button>
+  <div class="focus-stage" id="focusStage" data-scene="vow">
+    <img class="stage-img" id="stageImg" src="assets/scenes/portrait.jpg" alt="格芮芙">
+    <div class="stage-veil" aria-hidden="true"></div>
+    <div class="date-top">
+      <div class="scene-tabs" id="sceneTabs">
+        <button type="button" data-scene="vow" class="is-on">婚纱</button>
+        <button type="button" data-scene="garden">幽庭</button>
+        <button type="button" data-scene="corridor">深廊</button>
+        <button type="button" data-scene="close">近景</button>
+        <button type="button" data-scene="cafe">咖啡馆</button>
+        <button type="button" data-scene="library">图书馆</button>
+        <button type="button" data-scene="classroom">教室</button>
+        <button type="button" data-scene="home">家里</button>
+      </div>
+      <div class="date-skins" id="dateSkins" hidden></div>
+    </div>
+    <img class="scene-actor" id="sceneActor" alt="" hidden>
+    <img class="stage-fore" id="stageFore" alt="" hidden>
+    <img class="table-fg" id="tableFg" src="assets/scenes/table_fg.png" alt="" hidden>
+    <div class="table-props" id="tableProps" hidden>
+      <button type="button" data-prop="cupL" aria-label="左边的杯子"></button>
+      <button type="button" data-prop="cupR" aria-label="右边的杯子"></button>
+      <button type="button" data-prop="cake" aria-label="蛋糕"></button>
+      <button type="button" data-prop="candle" aria-label="蜡烛"></button>
+      <button type="button" data-prop="book" aria-label="书"></button>
+    </div>
+    <div class="focus-bubble" id="focusBubble" hidden></div>
+    <img class="end-img" id="endImg" alt="" hidden>
+  </div>
+  <div class="focus-done-banner" id="focusDoneBanner" hidden><b>时间到</b><span>她站起来了</span></div>
+  <div class="focus-bar">
+    <div class="focus-head">
+      <span class="focus-name" id="focusName">格芮芙 · 陪着你</span>
+      <span class="focus-mode-label" id="focusModeLabel">正向计时</span>
+    </div>
+    <div class="focus-clock" id="focusClock">00:00</div>
+    <div class="focus-tabs" id="focusTabs">
+      <button type="button" data-mode="up" class="is-on">正向</button>
+      <button type="button" data-mode="down">倒计时</button>
+      <button type="button" data-mode="interval">间隔</button>
+    </div>
+    <div class="focus-opts" id="focusOpts"></div>
+    <div class="focus-actions">
+      <button class="fbtn primary" id="focusStart" type="button">开始</button>
+      <button class="fbtn" id="focusReset" type="button">重来</button>
+    </div>
+    <p class="focus-note">她不会打扰你。每五分钟，她会说一句话。</p>
+  </div>
+</section>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card" id="modalCard"></div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/persona.js?v=13"></script>
+<script src="js/app.js?v=13"></script>
+</body>
+</html>
